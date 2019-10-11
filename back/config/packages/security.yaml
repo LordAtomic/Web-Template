@@ -1,42 +1,51 @@
 security:
     providers:
-        user_db_provider:
+        entity_provider:
             entity:
                 class: App\Entity\User
-                property: apiKey
-        in_memory:
-            memory:
-                users:
-                    admin:
-                        password: $2y$12$LhoRWwnWimLqBjFeXOD59ObHQlALhaZh2pqkGzzTIrXeFZs/ltSju
-                        roles: 'ROLE_ADMIN'
-        # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
-            entity:
-                class: App\Entity\User
-                property: email
+                property: username
     role_hierarchy:
         ROLE_ADMIN: [ROLE_API]
+
     firewalls:
+        login:
+            pattern:  ^/login
+            stateless: true
+            anonymous: true
+            json_login:
+                check_path: /login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        register:
+            pattern:  ^/register
+            stateless: true
+            anonymous: true
+
         api:
             pattern: ^/api/
+            anonymous: false
+            stateless: true
+            provider: entity_provider
             guard:
                 authenticators:
-                    - App\Security\TokenAuthenticator
-            provider: user_db_provider
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            http_basic: true
-            provider: in_memory
-    access_control:
-        - { path: ^/api/, roles: ROLE_API }
-        - { path: ^/admin/, roles: ROLE_ADMIN }
-    encoders:
-        Symfony\Component\Security\Core\User\User:
-            algorithm: bcrypt
-            cost: 12
-        App\Entity\User:
-            algorithm: auto
 
+        main:
+            anonymous: false
+            http_basic: true
+            provider: entity_provider
+
+    access_control:
+        - { path: ^/admin/, roles: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt

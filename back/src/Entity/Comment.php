@@ -34,7 +34,10 @@ class Comment
         return (string) $this->getId();
     }
 
-    public function getId(): ?int
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }

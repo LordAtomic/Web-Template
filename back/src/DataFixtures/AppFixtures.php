@@ -12,11 +12,6 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $user = new User();
-        $user->setApiKey('test_api_key');
-        $user->setEmail('test@mail.fr');
-        $user->setPassword('test');
-        $manager->persist($user);
         for ($i = 0; $i < 10; $i++) {
             $article = new Article();
             $article->setBody('This is a body of article ' . $i);
