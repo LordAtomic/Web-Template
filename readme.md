@@ -2,9 +2,8 @@
 
 ## Back
 - [X] Symfony 4.3
-- [ ] FOS
-- [ ] API Platform
-- [ ] User authenticate with JWT token on API
+- [X] API Platform
+- [X] User authenticate with JWT token on API
 
 ## Front 
 - [X] Parcel 
