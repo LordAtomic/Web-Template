@@ -12,7 +12,7 @@ npm install
 yarn install 
 ```
 
-## Parcel Commands
+### Parcel Commands
 
 ```bash 
 # with npm 
@@ -25,3 +25,9 @@ yarn dev
 yarn dev-watch-update
 yarn build
 ```
+
+## Dependency 
+
+- React-Bootstrap 
+- leaflet, React-Leaflet
+- Moment, React-Moment
