@@ -1,6 +1,0 @@
-/back/vendor/
-/back/.env
-/front/node_modules/
-/front/.cache/
-/back/public/bundles/*
-/front/dist/

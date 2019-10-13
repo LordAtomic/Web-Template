@@ -1,5 +1,8 @@
-
+/public/bundles/*
+/var/cache/
+/var/log/
+/vendor/
+.env
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
-/var/cache/

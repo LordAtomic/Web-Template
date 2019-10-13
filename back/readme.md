@@ -17,6 +17,7 @@ php bin/console doctrine:schema:update -f
 php bin/console doctrine:fixtures:load
 ```
 
+Generate private and public key for JWT authentication
 ```bash 
 openssl genrsa -out config/jwt/private.pem -aes256 4096
 openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
@@ -24,10 +25,15 @@ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 
 Change `JWT_PASSPHRASE` in .env
 
-```bash 
-curl -X POST http://localhost:8001/register -d _username=johndoe -d _password=test
+Run the Web server
+```bash
+php bin/console server:start *:8081
 ```
 
 ```bash 
-curl -X POST -H "Content-Type: application/json" http://localhost:8001/login_check -d '{"username":"antoine","password":"antoine"}'
+curl -X POST http://localhost:8081/register -d _username=antoine -d _password=antoine
+```
+
+```bash 
+curl -X POST -H "Content-Type: application/json" http://localhost:8081/login_check -d '{"username":"antoine","password":"antoine"}'
 ```
