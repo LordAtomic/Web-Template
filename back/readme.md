@@ -26,14 +26,20 @@ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 Change `JWT_PASSPHRASE` in .env
 
 Run the Web server
+
 ```bash
 php bin/console server:start *:8081
 ```
+Register a user
 
 ```bash 
 curl -X POST http://localhost:8081/register -d _username=antoine -d _password=antoine
 ```
-
+Take token a existing user 
 ```bash 
 curl -X POST -H "Content-Type: application/json" http://localhost:8081/login_check -d '{"username":"antoine","password":"antoine"}'
 ```
+
+## To do
+
+- [ ] Symfony command for register a user with valid auth token and different role.
