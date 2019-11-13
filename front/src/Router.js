@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./component/Home/home";
 import MapComponent from "./component/Map/mapComponent";
+import Game from "./component/Game/Game";
 
 class RouterComponent extends Component {
     noRouteMatch () {
@@ -18,6 +19,7 @@ class RouterComponent extends Component {
                 <Switch>
                     <Route path="/" exact component={Home}/>
                     <Route path="/map" exact component={MapComponent}/>
+                    <Route path="/game" exact component={Game}/>
                     <Route component={this.noRouteMatch}/>
                 </Switch>
             </Router>

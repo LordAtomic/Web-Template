@@ -7,6 +7,7 @@ const Menu = () => {
             <Navbar.Brand href="/">Web Template</Navbar.Brand>
             <Nav className="mr-auto">
                 <Nav.Link href="/map">Map</Nav.Link>
+                <Nav.Link href="/game">Game</Nav.Link>
             </Nav>
         </Navbar>
     );
