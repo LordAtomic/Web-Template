@@ -21,7 +21,6 @@ npm run dev-watch-update
 npm run build
 
 # with Yarn
-yarn dev
 yarn dev-watch-update
 yarn build
 ```

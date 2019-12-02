@@ -9,7 +9,7 @@ class Home extends Component{
             <div>
                 <h1>Home</h1>
                 <Moment format="YYYY/MM/DD">
-                    1976-04-19T12:59-0500
+                    2019-11-17T12:59-0500
                 </Moment>
             </div>
         )

@@ -28,7 +28,7 @@ Change `JWT_PASSPHRASE` in .env
 Run the Web server
 
 ```bash
-php bin/console server:start *:8081
+php bin/console server:start localhost:8081
 ```
 Register a user
 
